@@ -10,3 +10,11 @@ Route::get('/', function () {
 
 // Ruta para el formulario de registro (POST)
 Route::post('/register', [UserController::class, 'register'])->name('register.user');
+
+// Rutas de autenticación
+Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+// Ruta protegida para el dashboard
+Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth')->name('dashboard');

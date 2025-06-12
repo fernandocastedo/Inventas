@@ -17,12 +17,12 @@
             <h1 class="text-3xl font-bold">InVentas</h1>
             <nav>
                 <ul class="list-unstyled d-flex mb-0">
-                    <li><a href="#caracteristicas" class="text-white mx-3">Características</a></li>
+                    <li><a githref="#caracteristicas" class="text-white mx-3">Características</a></li>
                     <li><a href="#beneficios" class="text-white mx-3">Beneficios</a></li>
                     <li><a href="#testimonios" class="text-white mx-3">Testimonios</a></li>
                     <li><a href="#planes" class="text-white mx-3">Planes</a></li>
-                    <li><a href="#formas_pago" class="text-white mx-3">Formas de Pago</a></li>
                     <li><a href="#contacto" class="text-white mx-3">Contacto</a></li>
+                    <li><a href="/login" class="btn btn-warning ms-3">Login</a></li>
                 </ul>
             </nav>
         </div>
@@ -42,17 +42,13 @@
         <div class="container text-center">
             <h3 class="text-3xl font-bold mb-8">Características de nuestro servicio</h3>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <h4>Plataforma Inteligente</h4>
                     <p>Una plataforma fácil de usar que permite a los mayoristas y minoristas gestionar inventarios, ventas y pedidos desde un solo lugar.</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <h4>Asesoría Personalizada</h4>
                     <p>El equipo de InVentas ofrece asesoría exclusiva para cada cliente, adaptando soluciones a medida que impulsan el crecimiento de tu negocio.</p>
-                </div>
-                <div class="col-md-4">
-                    <h4>Logística Eficiente</h4>
-                    <p>Con alianzas estratégicas en todo el país, aseguramos que los pedidos lleguen a tiempo y en perfecto estado, optimizando los costos de envío.</p>
                 </div>
             </div>
         </div>
@@ -109,29 +105,6 @@
                     <p>Para grandes distribuidores. Incluye todas las ventajas del Plan Avanzado y personalización exclusiva, junto con análisis avanzados de ventas.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Sección Producto Destacado -->
-    <section id="producto" class="text-center py-5">
-        <div class="container">
-            <h3 class="text-3xl font-bold mb-4">Producto Destacado</h3>
-            <img src="{{ asset('images/producto1.jpg') }}" alt="Perlas" class="img-fluid">
-            <p class="mt-4">Este es un ejemplo de producto destacado. Nuestra perla está disponible en diversas variaciones.</p>
-        </div>
-    </section>
-
-    <!-- Formas de Pago -->
-    <section id="formas_pago" class="bg-light py-5">
-        <div class="container text-center">
-            <h3 class="text-3xl font-bold mb-8">Formas de Pago</h3>
-            <p>En InVentas ofrecemos diversas formas de pago seguras y convenientes para nuestros clientes. Puedes pagar con:</p>
-            <ul class="list-unstyled">
-                <li><strong>Tarjetas de Crédito y Débito</strong>: Aceptamos todas las principales tarjetas de crédito y débito, incluyendo Visa, MasterCard y American Express.</li>
-                <li><strong>Transferencias Bancarias</strong>: Realiza pagos mediante transferencias bancarias directas a nuestras cuentas.</li>
-                <li><strong>Paypal</strong>: Para una experiencia de pago rápida y segura, puedes usar PayPal.</li>
-                <li><strong>Pago Contra Entrega</strong>: Si prefieres pagar al recibir tus productos, ofrecemos esta opción en ciertos países y regiones.</li>
-            </ul>
         </div>
     </section>
 
