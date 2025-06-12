@@ -1,0 +1,184 @@
+/* Colores de fondo y texto */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin-left: 20px;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+/* Estilos del menú */
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    padding-right: 20px;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+nav ul li a:hover {
+    color: #ffcc00; /* Resaltado en amarillo */
+}
+
+/* Sección Hero */
+#hero {
+    text-align: center;
+    background-color: #0056b3;
+    color: white;
+    padding: 60px 20px;
+}
+
+#hero h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+#hero .btn {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#hero .btn:hover {
+    background-color: #e6b800;
+}
+
+/* Sección Características */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 20px;
+}
+
+.feature {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 30%;
+}
+
+.feature h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Sección Beneficios */
+.benefits {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.benefits ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.2em;
+}
+
+.benefits ul li {
+    margin-bottom: 15px;
+}
+
+/* Sección Testimonios */
+.testimonials {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e6e6e6;
+}
+
+.testimonials p {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonials h5 {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Sección Planes */
+.plans {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.plans .plan {
+    display: inline-block;
+    width: 30%;
+    padding: 20px;
+    background-color: #f1f1f1;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección Formulario de Contacto */
+#contacto {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#contacto input, #contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#contacto button {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contacto button:hover {
+    background-color: #003d80;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plans .plan {
+        width: 90%;
+    }
+}
