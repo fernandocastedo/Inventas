@@ -46,7 +46,31 @@
                 </div>
                 <div id="productos" class="mb-4">
                     <h4>Productos</h4>
-                    <p>Sección no funcional. Aquí se mostraría la gestión de productos.</p>
+                    <!-- Botón grande para agregar producto -->
+                    <div class="mb-3">
+                        <a href="{{ url('/add_product') }}" class="btn btn-primary btn-lg w-50" style="aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;">
+                            Agregar producto
+                        </a>
+                    </div>
+
+                    <!-- Lista de productos -->
+                    @if(isset($products) && count($products))
+                        <div class="row gy-3">
+                            @foreach($products as $product)
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card h-100">
+                                        <div class="card-body d-flex flex-column">
+                                            <h5 class="card-title">{{ $product->name }}</h5>
+                                            <p class="card-text flex-grow-1">{{ Str::limit($product->description, 100) }}</p>
+                                            <a href="{{ url('/update_product/'.$product->id) }}" class="btn btn-outline-primary mt-auto">Actualizar producto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="text-muted">No hay productos agregados.</p>
+                    @endif
                 </div>
                 <div id="ventas" class="mb-4">
                     <h4>Ventas</h4>
