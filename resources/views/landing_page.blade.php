@@ -47,12 +47,12 @@
             <h3 class="text-3xl font-bold mb-8">Características de nuestro servicio</h3>
             <div class="row justify-content-center">
                 <div class="col-md-5 feature card-hover mx-2 mb-4">
-                    <img src="/images/icono_plataforma.png" alt="Plataforma" style="height:48px;" class="mb-2">
+                    <img src="/images/icono_plataforma.jpg" alt="Plataforma" style="height:288px;" class="mb-2">
                     <h4>Plataforma Inteligente</h4>
                     <p>Una plataforma fácil de usar que permite a los mayoristas y minoristas gestionar inventarios, ventas y pedidos desde un solo lugar.</p>
                 </div>
                 <div class="col-md-5 feature card-hover mx-2 mb-4">
-                    <img src="/images/icono_asesoria.png" alt="Asesoría" style="height:48px;" class="mb-2">
+                    <img src="/images/icono_asesoria.jpg" alt="Asesoría" style="height:288px;" class="mb-2">
                     <h4>Asesoría Personalizada</h4>
                     <p>El equipo de InVentas ofrece asesoría exclusiva para cada cliente, adaptando soluciones a medida que impulsan el crecimiento de tu negocio.</p>
                 </div>
@@ -85,17 +85,17 @@
             <h3 class="text-3xl font-bold mb-8">Testimonios de Clientes</h3>
             <div class="row justify-content-center">
                 <div class="col-md-4 card-hover mb-4">
-                    <img src="/images/testimonio_juan.jpg" alt="Juan Pérez" class="rounded-circle mb-2" style="width:60px;height:60px;object-fit:cover;">
+                    <img src="/images/testimonio_juan.jpg" alt="Juan Pérez" class="rounded-circle mb-2" style="width:180px;height:180px;object-fit:cover;">
                     <p>"Gracias a InVentas, hemos mejorado nuestras ventas y distribuimos nuestros productos a un mayor número de clientes."</p>
                     <h5>- Juan Pérez, Distribuidor de Bisutería</h5>
                 </div>
                 <div class="col-md-4 card-hover mb-4">
-                    <img src="/images/testimonio_marta.jpg" alt="Marta López" class="rounded-circle mb-2" style="width:60px;height:60px;object-fit:cover;">
+                    <img src="/images/testimonio_marta.png" alt="Marta López" class="rounded-circle mb-2" style="width:180px;height:180px;object-fit:cover;">
                     <p>"Excelente servicio, muy profesionales. ¡Altamente recomendados! Nos han ayudado a expandir nuestro mercado."</p>
                     <h5>- Marta López, Tienda de Accesorios</h5>
                 </div>
                 <div class="col-md-4 card-hover mb-4">
-                    <img src="/images/testimonio_luis.jpg" alt="Luis García" class="rounded-circle mb-2" style="width:60px;height:60px;object-fit:cover;">
+                    <img src="/images/testimonio_luis.jpg" alt="Luis García" class="rounded-circle mb-2" style="width:180px;height:180px;object-fit:cover;">
                     <p>"La plataforma es fácil de usar y ha facilitado la gestión de nuestros pedidos. Definitivamente la mejor opción para mayoristas."</p>
                     <h5>- Luis García, Mayorista de Joyería</h5>
                 </div>
@@ -109,17 +109,17 @@
             <h3 class="text-3xl font-bold mb-8">Planes Disponibles</h3>
             <div class="row justify-content-center">
                 <div class="col-md-4 plan card-hover mx-2 mb-4">
-                    <img src="/images/plan_basico.png" alt="Plan Básico" style="height:40px;" class="mb-2">
+                    <img src="/images/plan_basico.png" alt="Plan Básico" style="height:120px;" class="mb-2">
                     <h4>Plan Básico</h4>
                     <p>Ideal para pequeñas tiendas minoristas. Incluye acceso al catálogo básico y un número limitado de productos.</p>
                 </div>
                 <div class="col-md-4 plan card-hover mx-2 mb-4">
-                    <img src="/images/plan_avanzado.png" alt="Plan Avanzado" style="height:40px;" class="mb-2">
+                    <img src="/images/plan_avanzado.png" alt="Plan Avanzado" style="height:120px;" class="mb-2">
                     <h4>Plan Avanzado</h4>
                     <p>Para empresas de tamaño medio. Incluye todos los productos, soporte prioritario y acceso a herramientas avanzadas de gestión.</p>
                 </div>
                 <div class="col-md-4 plan card-hover mx-2 mb-4">
-                    <img src="/images/plan_premium.png" alt="Plan Premium" style="height:40px;" class="mb-2">
+                    <img src="/images/plan_premium.png" alt="Plan Premium" style="height:120px;" class="mb-2">
                     <h4>Plan Premium</h4>
                     <p>Para grandes distribuidores. Incluye todas las ventajas del Plan Avanzado y personalización exclusiva, junto con análisis avanzados de ventas.</p>
                 </div>
