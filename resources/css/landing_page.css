@@ -11,6 +11,13 @@ header {
     background-color: #333;
     color: #fff;
     padding: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    animation: fadeInDown 1s;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: none; }
 }
 
 header h1 {
@@ -44,9 +51,21 @@ nav ul li a:hover {
 /* Sección Hero */
 #hero {
     text-align: center;
-    background-color: #0056b3;
+    background: linear-gradient(120deg, #0056b3 60%, #007bff 100%);
     color: white;
     padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 120px;
+    background: url('https://www.transparenttextures.com/patterns/diagmonds-light.png');
+    opacity: 0.15;
+    pointer-events: none;
 }
 
 #hero h2 {
@@ -86,6 +105,13 @@ nav ul li a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     width: 30%;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
 .feature h4 {
@@ -142,6 +168,13 @@ nav ul li a:hover {
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+}
+
+.plans .plan:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
 /* Sección Formulario de Contacto */
@@ -181,4 +214,71 @@ nav ul li a:hover {
     .plans .plan {
         width: 90%;
     }
+}
+
+/* Animaciones generales */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Animación de entrada retardada para secciones */
+.fade-in.delay-1 { animation-delay: 0.2s; }
+.fade-in.delay-2 { animation-delay: 0.4s; }
+.fade-in.delay-3 { animation-delay: 0.6s; }
+.fade-in.delay-4 { animation-delay: 0.8s; }
+
+/* Hover animado en cards y botones */
+.card-hover, .feature, .plan {
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+}
+.card-hover:hover, .feature:hover, .plan:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.btn, .btn-primary, .btn-warning, .btn-success {
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.btn:hover, .btn-primary:hover, .btn-warning:hover, .btn-success:hover {
+    background: linear-gradient(90deg, #ffcc00 0%, #ffb347 100%);
+    color: #222;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+
+/* Animación de scroll para testimonios y planes */
+@media (prefers-reduced-motion: no-preference) {
+    .scroll-animate {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s, transform 0.7s;
+    }
+    .scroll-animate.visible {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Mejoras visuales para cards de planes y testimonios */
+.plan, .testimonials .col-md-4 {
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    margin-bottom: 24px;
+    padding: 24px 16px;
+}
+
+.testimonials .col-md-4 {
+    background: #f8f9fa;
+    border: 1px solid #e6e6e6;
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 
 // Ruta para la landing page
 Route::get('/', function () {
@@ -18,3 +20,12 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Ruta protegida para el dashboard
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+
+// Rutas CRUD de ventas (Order)
+Route::resource('orders', OrderController::class)->middleware('auth');
+
+// Rutas CRUD de productos
+Route::resource('products', ProductController::class);
+
+// Rutas CRUD de usuarios
+Route::resource('users', UserController::class);
