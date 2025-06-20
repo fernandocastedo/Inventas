@@ -11,8 +11,8 @@ class ProductController extends Controller
     // Listar productos
     public function index()
     {
-        // Por ahora, filtramos por tenant_id=1 (puedes cambiar esto por el tenant del usuario logueado)
-        $products = Product::where('tenant_id', 1)->with('variants')->get();
+        $tenantId = auth()->user()->tenant_id;
+        $products = Product::forTenant($tenantId)->with('variants')->get();
         return view('products.index', compact('products'));
     }
 
@@ -32,7 +32,7 @@ class ProductController extends Controller
             'status' => 'required',
         ]);
         $product = Product::create([
-            'tenant_id' => 1, // Cambia por el tenant real
+            'tenant_id' => auth()->user()->tenant_id,
             'name' => $request->name,
             'description' => $request->description,
             'category' => $request->category,
@@ -44,63 +44,30 @@ class ProductController extends Controller
     // Mostrar formulario de edición
     public function edit($id)
     {
-        $product = Product::with('variants')->findOrFail($id);
+        $tenantId = auth()->user()->tenant_id;
+        $product = Product::forTenant($tenantId)->with('variants')->findOrFail($id);
         return view('products.edit', compact('product'));
     }
 
     // Actualizar producto y variantes
     public function update(Request $request, $id)
     {
+        $tenantId = auth()->user()->tenant_id;
+        $product = Product::forTenant($tenantId)->findOrFail($id);
         $request->validate([
             'name' => 'required',
-            'description' => 'nullable',
-            'category' => 'nullable',
-            'status' => 'required',
-            'variants.*.name' => 'required',
-            'variants.*.price' => 'required|numeric',
-            'variants.*.stock' => 'required|integer',
+            'description' => 'required',
+            'price' => 'required|numeric',
         ]);
-        $product = Product::findOrFail($id);
-        $product->update($request->only(['name', 'description', 'category', 'status']));
-
-        // Actualizar variantes
-        $variantIds = [];
-        if ($request->has('variants')) {
-            foreach ($request->variants as $variantData) {
-                if (isset($variantData['variant_id'])) {
-                    // Actualizar variante existente
-                    $variant = $product->variants()->where('variant_id', $variantData['variant_id'])->first();
-                    if ($variant) {
-                        $variant->update([
-                            'name' => $variantData['name'],
-                            'price' => $variantData['price'],
-                            'stock' => $variantData['stock'],
-                        ]);
-                        $variantIds[] = $variant->variant_id;
-                    }
-                } else {
-                    // Crear nueva variante
-                    $newVariant = $product->variants()->create([
-                        'name' => $variantData['name'],
-                        'price' => $variantData['price'],
-                        'stock' => $variantData['stock'],
-                    ]);
-                    $variantIds[] = $newVariant->variant_id;
-                }
-            }
-        }
-        // Eliminar variantes que no están en el formulario
-        $product->variants()->whereNotIn('variant_id', $variantIds)->delete();
-
-        return redirect()->route('products.edit', $product->product_id)->with('success', 'Producto y variantes actualizados correctamente.');
+        $product->update($request->only(['name', 'description', 'price']));
+        return redirect()->route('products.index')->with('success', 'Producto actualizado correctamente.');
     }
 
     // Eliminar producto
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
-        // Eliminar variantes asociadas
-        $product->variants()->delete();
+        $tenantId = auth()->user()->tenant_id;
+        $product = Product::forTenant($tenantId)->findOrFail($id);
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Producto eliminado correctamente.');
     }

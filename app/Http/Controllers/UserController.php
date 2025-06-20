@@ -10,19 +10,20 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+        $request->validate([
+            'email' => 'required|email|unique:User,email',
             'password' => 'required|min:6|confirmed',
         ]);
-
         $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
+            'tenant_id' => 1, // O lógica para asignar tenant
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'user',
+            'status' => 'active',
         ]);
-
-        return redirect('/');
+        // Autologin tras registro
+        auth()->login($user);
+        return redirect()->route('dashboard')->with('success', '¡Cuenta creada exitosamente!');
     }
 
     public function showLoginForm()
@@ -63,7 +64,8 @@ class UserController extends Controller
     // Listar usuarios del tenant actual
     public function index()
     {
-        $users = User::where('tenant_id', 1)->get();
+        $tenantId = auth()->user()->tenant_id;
+        $users = User::forTenant($tenantId)->get();
         return view('users.index', compact('users'));
     }
 
@@ -83,7 +85,7 @@ class UserController extends Controller
             'status' => 'required',
         ]);
         User::create([
-            'tenant_id' => 1, // Cambia por el tenant real
+            'tenant_id' => auth()->user()->tenant_id,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
@@ -95,14 +97,16 @@ class UserController extends Controller
     // Mostrar formulario de edición
     public function edit($id)
     {
-        $user = User::where('tenant_id', 1)->findOrFail($id);
+        $tenantId = auth()->user()->tenant_id;
+        $user = User::forTenant($tenantId)->findOrFail($id);
         return view('users.edit', compact('user'));
     }
 
     // Actualizar usuario
     public function update(Request $request, $id)
     {
-        $user = User::where('tenant_id', 1)->findOrFail($id);
+        $tenantId = auth()->user()->tenant_id;
+        $user = User::forTenant($tenantId)->findOrFail($id);
         $request->validate([
             'email' => 'required|email|unique:User,email,' . $user->user_id . ',user_id',
             'role' => 'required',
@@ -123,8 +127,14 @@ class UserController extends Controller
     // Eliminar usuario
     public function destroy($id)
     {
-        $user = User::where('tenant_id', 1)->findOrFail($id);
+        $tenantId = auth()->user()->tenant_id;
+        $user = User::forTenant($tenantId)->findOrFail($id);
         $user->delete();
         return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
+    }
+
+    public function showRegisterForm()
+    {
+        return view('auth.register');
     }
 }

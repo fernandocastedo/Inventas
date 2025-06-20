@@ -53,4 +53,9 @@ class User extends Authenticatable
     }
 
     public $timestamps = false;
+
+    public function scopeForTenant($query, $tenantId)
+    {
+        return $query->where('tenant_id', $tenantId);
+    }
 }

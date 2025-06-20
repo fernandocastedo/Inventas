@@ -12,29 +12,27 @@ Route::get('/', function () {
 });
 
 // Ruta para el formulario de registro (POST)
-Route::post('/register', [UserController::class, 'register'])->name('register.user');
+Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [UserController::class, 'register'])->name('register.post');
 
 // Rutas de autenticación
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-// Ruta protegida para el dashboard
-Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth')->name('dashboard');
-
-// Rutas CRUD de ventas (Order)
-Route::resource('orders', OrderController::class)->middleware('auth');
-
-// Rutas CRUD de productos
-Route::resource('products', ProductController::class);
-
-// Rutas CRUD de usuarios
-Route::resource('users', UserController::class);
-
+// Rutas públicas
 Route::get('/planes/inicial', [PlanController::class, 'inicial'])->name('planes.inicial');
 Route::get('/planes/avanzado', [PlanController::class, 'avanzado'])->name('planes.avanzado');
 Route::get('/planes/premium', [PlanController::class, 'premium'])->name('planes.premium');
-
 Route::post('/planes/avanzado', [PlanController::class, 'postAvanzado'])->name('planes.avanzado.post');
 Route::post('/planes/premium/demo', [PlanController::class, 'postPremiumDemo'])->name('planes.premium.demo');
 Route::post('/planes/premium/contratar', [PlanController::class, 'postPremiumContratar'])->name('planes.premium.contratar');
+
+// Rutas protegidas por auth
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('orders', OrderController::class);
+    // Aquí puedes agregar más rutas protegidas
+});

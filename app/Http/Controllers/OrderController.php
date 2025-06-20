@@ -13,27 +13,35 @@ class OrderController extends Controller
     // Listar todas las ventas
     public function index()
     {
-        $orders = Order::with(['user', 'cart.items.variant'])->orderBy('created_at', 'desc')->get();
+        $tenantId = auth()->user()->tenant_id;
+        $orders = Order::whereHas('user', function($q) use ($tenantId) {
+            $q->where('tenant_id', $tenantId);
+        })->with(['user', 'cart.items.variant'])->orderBy('created_at', 'desc')->get();
         return view('orders.index', compact('orders'));
     }
 
     // Mostrar formulario de creación de venta
     public function create()
     {
-        $users = User::all();
-        $carts = Cart::whereDoesntHave('order')->get(); // Carritos sin venta asociada
+        $tenantId = auth()->user()->tenant_id;
+        $users = User::forTenant($tenantId)->get();
+        $carts = Cart::whereIn('user_id', $users->pluck('user_id'))->whereDoesntHave('order')->get();
         return view('orders.create', compact('users', 'carts'));
     }
 
     // Guardar una nueva venta
     public function store(Request $request)
     {
+        $tenantId = auth()->user()->tenant_id;
         $request->validate([
             'cart_id' => 'required|exists:Cart,cart_id',
             'user_id' => 'required|exists:User,user_id',
             'total_amount' => 'required|numeric',
             'status' => 'required',
         ]);
+        // Validar que el user_id y cart_id pertenezcan al tenant
+        $user = User::forTenant($tenantId)->findOrFail($request->user_id);
+        $cart = Cart::where('cart_id', $request->cart_id)->where('user_id', $user->user_id)->firstOrFail();
         $order = Order::create($request->only(['cart_id', 'user_id', 'total_amount', 'status']));
         return redirect()->route('orders.index')->with('success', 'Venta registrada correctamente.');
     }
@@ -41,17 +49,22 @@ class OrderController extends Controller
     // Mostrar detalle de una venta
     public function show($id)
     {
-        $order = Order::with(['user', 'cart.items.variant'])->findOrFail($id);
+        $tenantId = auth()->user()->tenant_id;
+        $order = Order::whereHas('user', function($q) use ($tenantId) {
+            $q->where('tenant_id', $tenantId);
+        })->with(['user', 'cart.items.variant'])->findOrFail($id);
         return view('orders.show', compact('order'));
     }
 
     // Mostrar formulario de edición
     public function edit($id)
     {
-        $order = Order::with(['cart.items.variant.product'])->findOrFail($id);
-        $users = User::all();
-        $carts = Cart::all();
-        // Obtener todas las variantes para permitir cambiar productos en el detalle
+        $tenantId = auth()->user()->tenant_id;
+        $order = Order::whereHas('user', function($q) use ($tenantId) {
+            $q->where('tenant_id', $tenantId);
+        })->with(['cart.items.variant.product'])->findOrFail($id);
+        $users = User::forTenant($tenantId)->get();
+        $carts = Cart::whereIn('user_id', $users->pluck('user_id'))->get();
         $variants = \App\Models\ProductVariant::with('product')->get();
         return view('orders.edit', compact('order', 'users', 'carts', 'variants'));
     }
@@ -59,7 +72,10 @@ class OrderController extends Controller
     // Actualizar una venta
     public function update(Request $request, $id)
     {
-        \Log::info('Order update request', $request->all());
+        $tenantId = auth()->user()->tenant_id;
+        $order = Order::whereHas('user', function($q) use ($tenantId) {
+            $q->where('tenant_id', $tenantId);
+        })->findOrFail($id);
         $request->validate([
             'cart_id' => 'required|exists:Cart,cart_id',
             'user_id' => 'required|exists:User,user_id',
@@ -68,10 +84,10 @@ class OrderController extends Controller
             'items.*.variant_id' => 'required|exists:ProductVariant,variant_id',
             'items.*.quantity' => 'required|integer|min:1',
         ]);
-        $order = Order::findOrFail($id);
+        // Validar que el user_id y cart_id pertenezcan al tenant
+        $user = User::forTenant($tenantId)->findOrFail($request->user_id);
+        $cart = Cart::where('cart_id', $request->cart_id)->where('user_id', $user->user_id)->firstOrFail();
         $order->update($request->only(['cart_id', 'user_id', 'status']));
-        // Actualizar los items del carrito
-        $cart = $order->cart;
         $cart->items()->delete();
         $total = 0;
         foreach ($request->items as $item) {
@@ -91,21 +107,17 @@ class OrderController extends Controller
     // Eliminar una venta
     public function destroy($id)
     {
-        $order = Order::findOrFail($id);
+        $tenantId = auth()->user()->tenant_id;
+        $order = Order::whereHas('user', function($q) use ($tenantId) {
+            $q->where('tenant_id', $tenantId);
+        })->findOrFail($id);
         $cart = $order->cart;
-
-        // Eliminar los pagos asociados a la venta
         \DB::table('payment')->where('order_id', $order->order_id)->delete();
-
-        // Eliminar la venta
         $order->delete();
-
-        // Eliminar el carrito y sus items
         if ($cart) {
             $cart->items()->delete();
             $cart->delete();
         }
-
         return redirect()->route('orders.index')->with('success', 'Venta eliminada correctamente.');
     }
 } 

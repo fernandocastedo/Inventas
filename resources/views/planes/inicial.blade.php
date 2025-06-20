@@ -1,4 +1,6 @@
-@extends('layouts.dashboard')
+@extends('layouts.landing')
+
+@section('title', 'Plan Inicial | InVentas')
 
 @section('content')
 <div class="container py-5">
