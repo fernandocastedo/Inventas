@@ -32,6 +32,7 @@
     <section id="hero" class="text-center bg-primary text-white py-5 fade-in delay-1">
         <div class="container position-relative">
             <h2 class="text-4xl font-semibold mb-4">Transforma tu negocio con InVentas</h2>
+            <img src="/images/hero_bisuteria.jpg" alt="Emprendedora de bisutería" class="img-fluid mb-4" style="max-height: 350px; object-fit: cover; border-radius: 18px;">
             <p class="text-lg mb-6">Soluciones mayoristas y minoristas especializadas en bisutería.</p>
             <a href="#servicios" class="btn btn-light btn-lg shadow-lg">Descubre Nuestros Servicios</a>
             <div class="position-absolute w-100" style="left:0;bottom:-40px;z-index:0;pointer-events:none;">
@@ -46,10 +47,12 @@
             <h3 class="text-3xl font-bold mb-8">Características de nuestro servicio</h3>
             <div class="row justify-content-center">
                 <div class="col-md-5 feature card-hover mx-2 mb-4">
+                    <img src="/images/icono_plataforma.png" alt="Plataforma" style="height:48px;" class="mb-2">
                     <h4>Plataforma Inteligente</h4>
                     <p>Una plataforma fácil de usar que permite a los mayoristas y minoristas gestionar inventarios, ventas y pedidos desde un solo lugar.</p>
                 </div>
                 <div class="col-md-5 feature card-hover mx-2 mb-4">
+                    <img src="/images/icono_asesoria.png" alt="Asesoría" style="height:48px;" class="mb-2">
                     <h4>Asesoría Personalizada</h4>
                     <p>El equipo de InVentas ofrece asesoría exclusiva para cada cliente, adaptando soluciones a medida que impulsan el crecimiento de tu negocio.</p>
                 </div>
@@ -61,11 +64,18 @@
     <section id="beneficios" class="bg-light py-5 fade-in delay-3">
         <div class="container text-center">
             <h3 class="text-3xl font-bold mb-8">Beneficios</h3>
-            <ul class="list-unstyled">
-                <li class="mb-2"><span class="fw-bold">✔</span> Acceso a un amplio catálogo de productos de bisutería</li>
-                <li class="mb-2"><span class="fw-bold">✔</span> Precios competitivos y descuentos exclusivos</li>
-                <li class="mb-2"><span class="fw-bold">✔</span> Soporte personalizado 24/7</li>
-            </ul>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-7">
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><span class="fw-bold">✔</span> Acceso a un amplio catálogo de productos de bisutería</li>
+                        <li class="mb-2"><span class="fw-bold">✔</span> Precios competitivos y descuentos exclusivos</li>
+                        <li class="mb-2"><span class="fw-bold">✔</span> Soporte personalizado 24/7</li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <img src="/images/beneficios_clientes.jpg" alt="Clientes felices" class="img-fluid rounded shadow mt-3" style="max-width: 350px;">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -75,14 +85,17 @@
             <h3 class="text-3xl font-bold mb-8">Testimonios de Clientes</h3>
             <div class="row justify-content-center">
                 <div class="col-md-4 card-hover mb-4">
+                    <img src="/images/testimonio_juan.jpg" alt="Juan Pérez" class="rounded-circle mb-2" style="width:60px;height:60px;object-fit:cover;">
                     <p>"Gracias a InVentas, hemos mejorado nuestras ventas y distribuimos nuestros productos a un mayor número de clientes."</p>
                     <h5>- Juan Pérez, Distribuidor de Bisutería</h5>
                 </div>
                 <div class="col-md-4 card-hover mb-4">
+                    <img src="/images/testimonio_marta.jpg" alt="Marta López" class="rounded-circle mb-2" style="width:60px;height:60px;object-fit:cover;">
                     <p>"Excelente servicio, muy profesionales. ¡Altamente recomendados! Nos han ayudado a expandir nuestro mercado."</p>
                     <h5>- Marta López, Tienda de Accesorios</h5>
                 </div>
                 <div class="col-md-4 card-hover mb-4">
+                    <img src="/images/testimonio_luis.jpg" alt="Luis García" class="rounded-circle mb-2" style="width:60px;height:60px;object-fit:cover;">
                     <p>"La plataforma es fácil de usar y ha facilitado la gestión de nuestros pedidos. Definitivamente la mejor opción para mayoristas."</p>
                     <h5>- Luis García, Mayorista de Joyería</h5>
                 </div>
@@ -96,14 +109,17 @@
             <h3 class="text-3xl font-bold mb-8">Planes Disponibles</h3>
             <div class="row justify-content-center">
                 <div class="col-md-4 plan card-hover mx-2 mb-4">
+                    <img src="/images/plan_basico.png" alt="Plan Básico" style="height:40px;" class="mb-2">
                     <h4>Plan Básico</h4>
                     <p>Ideal para pequeñas tiendas minoristas. Incluye acceso al catálogo básico y un número limitado de productos.</p>
                 </div>
                 <div class="col-md-4 plan card-hover mx-2 mb-4">
+                    <img src="/images/plan_avanzado.png" alt="Plan Avanzado" style="height:40px;" class="mb-2">
                     <h4>Plan Avanzado</h4>
                     <p>Para empresas de tamaño medio. Incluye todos los productos, soporte prioritario y acceso a herramientas avanzadas de gestión.</p>
                 </div>
                 <div class="col-md-4 plan card-hover mx-2 mb-4">
+                    <img src="/images/plan_premium.png" alt="Plan Premium" style="height:40px;" class="mb-2">
                     <h4>Plan Premium</h4>
                     <p>Para grandes distribuidores. Incluye todas las ventajas del Plan Avanzado y personalización exclusiva, junto con análisis avanzados de ventas.</p>
                 </div>
@@ -115,6 +131,7 @@
     <section id="contacto" class="py-5 fade-in delay-4">
         <div class="container">
             <h3 class="text-3xl font-bold mb-8">Contacto</h3>
+            <img src="/images/contacto_icono.png" alt="Contacto" style="height:60px;" class="mb-3">
             <form action="#" method="POST" class="card-hover p-4 shadow-lg bg-white rounded-3">
                 <div class="mb-3">
                     <input type="text" class="form-control" placeholder="Nombre" required>
