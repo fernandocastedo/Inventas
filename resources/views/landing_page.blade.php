@@ -87,17 +87,17 @@
                 <div class="col-md-4 card-hover mb-4">
                     <img src="/images/testimonio_juan.jpg" alt="Juan Pérez" class="rounded-circle mb-2" style="width:180px;height:180px;object-fit:cover;">
                     <p>"Gracias a InVentas, hemos mejorado nuestras ventas y distribuimos nuestros productos a un mayor número de clientes."</p>
-                    <h5>- Juan Pérez, Distribuidor de Bisutería</h5>
+                    <h5>- Juana Pérez, Distribuidor de Bisutería</h5>
                 </div>
                 <div class="col-md-4 card-hover mb-4">
-                    <img src="/images/testimonio_marta.png" alt="Marta López" class="rounded-circle mb-2" style="width:180px;height:180px;object-fit:cover;">
+                    <img src="/images/testimonio_marta.jpg" alt="Marta López" class="rounded-circle mb-2" style="width:180px;height:180px;object-fit:cover;">
                     <p>"Excelente servicio, muy profesionales. ¡Altamente recomendados! Nos han ayudado a expandir nuestro mercado."</p>
                     <h5>- Marta López, Tienda de Accesorios</h5>
                 </div>
                 <div class="col-md-4 card-hover mb-4">
                     <img src="/images/testimonio_luis.jpg" alt="Luis García" class="rounded-circle mb-2" style="width:180px;height:180px;object-fit:cover;">
                     <p>"La plataforma es fácil de usar y ha facilitado la gestión de nuestros pedidos. Definitivamente la mejor opción para mayoristas."</p>
-                    <h5>- Luis García, Mayorista de Joyería</h5>
+                    <h5>- Luisa García, Mayorista de Joyería</h5>
                 </div>
             </div>
         </div>
@@ -107,21 +107,66 @@
     <section id="planes" class="bg-light py-5 scroll-animate">
         <div class="container text-center">
             <h3 class="text-3xl font-bold mb-8">Planes Disponibles</h3>
-            <div class="row justify-content-center">
-                <div class="col-md-4 plan card-hover mx-2 mb-4">
-                    <img src="/images/plan_basico.png" alt="Plan Básico" style="height:120px;" class="mb-2">
-                    <h4>Plan Básico</h4>
-                    <p>Ideal para pequeñas tiendas minoristas. Incluye acceso al catálogo básico y un número limitado de productos.</p>
+            <div class="row g-3 justify-content-center">
+                <!-- Plan Inicial -->
+                <div class="col-lg-4 col-md-6 plan card-hover mb-4 p-3 bg-white border rounded-4 shadow-sm">
+                    <img src="/images/plan_basico.png" alt="Plan Inicial" style="height:100px;" class="mb-2">
+                    <h4 class="fw-bold">Inicial</h4>
+                    <div class="text-muted mb-2">Para emprendedores que inician</div>
+                    <div class="display-5 fw-bold mb-1">$0 <span class="fs-6">USD</span></div>
+                    <div class="mb-2 text-muted">Plan gratuito para comenzar</div>
+                    <hr>
+                    <div class="text-start mb-2">
+                        <div class="fw-bold mb-2">Funciones destacadas</div>
+                        <ul class="list-unstyled">
+                            <li>✔ Gestión básica de inventario</li>
+                            <li>✔ Hasta 10 productos</li>
+                            <li>✔ 1 usuario administrador</li>
+                            <li>✔ Reportes simples</li>
+                        </ul>
+                    </div>
+                    <button onclick="window.location='{{ route('planes.inicial') }}'" class="btn btn-dark w-100 py-2">Comenzar gratis</button>
                 </div>
-                <div class="col-md-4 plan card-hover mx-2 mb-4">
-                    <img src="/images/plan_avanzado.png" alt="Plan Avanzado" style="height:120px;" class="mb-2">
-                    <h4>Plan Avanzado</h4>
-                    <p>Para empresas de tamaño medio. Incluye todos los productos, soporte prioritario y acceso a herramientas avanzadas de gestión.</p>
+                <!-- Plan Avanzado -->
+                <div class="col-lg-4 col-md-6 plan card-hover mb-4 p-3 bg-white border rounded-4 shadow-sm">
+                    <img src="/images/plan_avanzado.png" alt="Plan Avanzado" style="height:100px;" class="mb-2">
+                    <h4 class="fw-bold">Avanzado</h4>
+                    <div class="text-muted mb-2">Para negocios en crecimiento</div>
+                    <div class="display-5 fw-bold mb-1">$150 <span class="fs-6">USD</span></div>
+                    <div class="mb-2 text-muted">Pago anual</div>
+                    <hr>
+                    <div class="text-start mb-2">
+                        <div class="fw-bold mb-2">Funciones destacadas</div>
+                        <ul class="list-unstyled">
+                            <li>✔ Inventario ilimitado</li>
+                            <li>✔ Hasta 5 usuarios</li>
+                            <li>✔ Gestión de ventas y pedidos</li>
+                            <li>✔ Reportes avanzados</li>
+                            <li>✔ Soporte por chat</li>
+                        </ul>
+                    </div>
+                    <button onclick="window.location='{{ route('planes.avanzado') }}'" class="btn btn-dark w-100 py-2">Prueba gratis</button>
                 </div>
-                <div class="col-md-4 plan card-hover mx-2 mb-4">
-                    <img src="/images/plan_premium.png" alt="Plan Premium" style="height:120px;" class="mb-2">
-                    <h4>Plan Premium</h4>
-                    <p>Para grandes distribuidores. Incluye todas las ventajas del Plan Avanzado y personalización exclusiva, junto con análisis avanzados de ventas.</p>
+                <!-- Plan Premium -->
+                <div class="col-lg-4 col-md-6 plan card-hover mb-4 p-3 bg-white border rounded-4 shadow-sm">
+                    <img src="/images/plan_premium.png" alt="Plan Premium" style="height:100px;" class="mb-2">
+                    <h4 class="fw-bold">Premium</h4>
+                    <div class="text-muted mb-2">Para empresas y mayoristas</div>
+                    <div class="display-5 fw-bold mb-1">$250 <span class="fs-6">USD</span></div>
+                    <div class="mb-2 text-muted">Pago anual</div>
+                    <hr>
+                    <div class="text-start mb-2">
+                        <div class="fw-bold mb-2">Funciones destacadas</div>
+                        <ul class="list-unstyled">
+                            <li>✔ Todo lo del plan Avanzado</li>
+                            <li>✔ Usuarios ilimitados</li>
+                            <li>✔ Multi-sucursal y multi-almacén</li>
+                            <li>✔ Integración con marketplaces</li>
+                            <li>✔ Soporte prioritario</li>
+                            <li>✔ Personalización de reportes</li>
+                        </ul>
+                    </div>
+                    <button onclick="window.location='{{ route('planes.premium') }}'" class="btn btn-dark w-100 py-2">Solicitar demo</button>
                 </div>
             </div>
         </div>
